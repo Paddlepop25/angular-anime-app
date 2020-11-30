@@ -8,10 +8,22 @@ import { SearchComponent } from './components/search.component';
 import { SearchlistComponent } from './components/searchlist.component';
 import { ResultsComponent } from './components/results.component';
 
+// start lottie animation
+import { LottieModule } from 'ngx-lottie';
+import player from 'lottie-web';
+
+export function playerFactory() {
+  return player;
+}
+//end lottie animation
+
+
+// routes
 const ROUTES: Routes = [
   { path:'', component: MainComponent },
   { path: '**', redirectTo: '/', pathMatch: 'full' }
 ]
+
 
 @NgModule({
   declarations: [
@@ -24,6 +36,7 @@ const ROUTES: Routes = [
   imports: [
     BrowserModule,
     RouterModule.forRoot(ROUTES),
+    LottieModule.forRoot({ player: playerFactory })
   ],
   providers: [],
   bootstrap: [AppComponent]
