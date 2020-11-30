@@ -22,6 +22,7 @@ export function playerFactory() {
 const ROUTES: Routes = [
   { path:'', component: MainComponent },
   { path:'search-list', component: SearchlistComponent },
+  { path:'search', component: SearchComponent },
   { path: '**', redirectTo: '/', pathMatch: 'full' }
 ]
 
