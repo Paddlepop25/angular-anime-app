@@ -18,9 +18,10 @@ export function playerFactory() {
 //end lottie animation
 
 
-// routes
+// routes, omit any / in front
 const ROUTES: Routes = [
   { path:'', component: MainComponent },
+  { path:'search-list', component: SearchlistComponent },
   { path: '**', redirectTo: '/', pathMatch: 'full' }
 ]
 

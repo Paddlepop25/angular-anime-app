@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AnimationOptions } from 'ngx-lottie';
 
 @Component({
@@ -12,9 +13,13 @@ export class MainComponent implements OnInit {
     path: '/assets/anime.json'
   }
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  goToList() {
+    this.router.navigate(['/search-list'])
   }
 
 }
