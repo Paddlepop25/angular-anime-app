@@ -25,11 +25,22 @@ export class AnimeDatabaseService extends Dexie {
   // save to database (indexedDB)
   // SearchOption reference to schema (models.ts)
   async saveSearchOption(s: SearchOption): Promise<any> {
+    const genre = s.genre == Genre.Anime ? 0 : 1
     console.log('saveSearchOption s', s)
     // removes spaces 
     s.q = removeSpacesForQ(s.q)
 
-    // saving to database portion
+    // saving to database portion!
+    // reference to SQL: select count(*) from searchOption where q = 'abc' and genre = 'anime'
+    // check if q and genre in table are same as form values
+    const resultCount = await this.searchOptionTable
+    .where('q').equals(s.q)
+    .and(doc => doc.genre == genre)
+    .count()
     
+    // if there are no records, add to the table
+    if (resultCount <= 0) {
+      return this.searchOptionTable.add(s)
+    }  
   }
 }
