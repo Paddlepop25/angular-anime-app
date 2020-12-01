@@ -13,3 +13,7 @@
 <h3>
   Results for '{{ q }}' under<code> {{ genre }} </code>genre
 </h3>
+
+<div *ngFor="let r of animeResults">
+  {{ r.title }}
+</div>
