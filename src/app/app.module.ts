@@ -24,6 +24,7 @@ const ROUTES: Routes = [
   { path:'', component: MainComponent },
   { path:'search-list', component: SearchlistComponent },
   { path:'search', component: SearchComponent },
+  { path:'results', component: ResultsComponent },
   { path: '**', redirectTo: '/', pathMatch: 'full' }
 ]
 
