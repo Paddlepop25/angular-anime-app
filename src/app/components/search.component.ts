@@ -27,24 +27,22 @@ export class SearchComponent implements OnInit {
     // search/:genre/:q
     // console.log(this.animeform)
     const q = removeSpacesForQ(this.animeform.get('q').value)
-    this.router.navigate(['/search', 'this.genre', q])
+    this.router.navigate(['/search', this.genre, q])
   }
 
-
   async saveOptions() {
+    // parameters in saveSearchOption(xx) must match what was set in anime.database.service.ts hence option below
     // SearchOption reference to models.ts, save according to the properties (q, genre). id is optional
-    console.log("saving q and genre to database...")
     const option: SearchOption = {
       q: this.animeform.get('q').value,
       genre: this.genre == 'anime' ? Genre.Anime : Genre.Manga
     }
-
+    
     // saving to database portion!
-    // parameters in saveSearchOption(xx) must match what was set in anime.database.service.ts hence option above
+    console.log("saving q and genre to database...")
     await this.animeDB.saveSearchOption(option)
 
     this.goToResultsPage()
-
   }
 
   // runs when user select either anime or manga button

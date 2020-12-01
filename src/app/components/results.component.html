@@ -1,1 +1,15 @@
-<p>results works!</p>
+<div class="row mt-3 mb-3">
+  <div class="col d-flex justify-content-end align-items-center">
+    <button
+      type="button"
+      class="btn btn-warning btn-sm"
+      [routerLink]="['/search-list']"
+    >
+      Back to search list
+    </button>
+  </div>
+</div>
+
+<h3>
+  Results for '{{ q }}' under<code> {{ genre }} </code>genre
+</h3>

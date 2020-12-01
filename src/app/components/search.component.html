@@ -13,7 +13,7 @@
 <form [formGroup]="animeform">
   <div class="form-group">
     <label for="search"
-      >Search text under <code>{{ genre }} </code>genre</label
+      >Search text under <code>{{ genre }}</code> genre</label
     >
     <input
       type="text"
@@ -46,7 +46,7 @@
         type="button"
         class="ml-2 btn btn-dark"
         [disabled]="animeform.invalid"
-        [routerLink]="['/results']"
+        (click)="goToResultsPage()"
       >
         Search
       </button>
