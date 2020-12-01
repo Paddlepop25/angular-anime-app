@@ -10,10 +10,17 @@
   </div>
 </div>
 
-<form>
+<form [formGroup]="animeform">
   <div class="form-group">
-    <label for="search">Search Text</label>
-    <input type="text" class="form-control" placeholder="e.g. doraemon" />
+    <label for="search"
+      >Search text under <code>{{ genre }} </code>genre</label
+    >
+    <input
+      type="text"
+      class="form-control"
+      placeholder="e.g. doraemon"
+      formControlName="q"
+    />
   </div>
 
   <div class="btn-group btn-block" role="group">
