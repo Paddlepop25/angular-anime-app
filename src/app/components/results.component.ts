@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
+import { AnimeResult } from '../models';
 
 @Component({
   selector: 'app-results',
@@ -29,13 +30,35 @@ export class ResultsComponent implements OnInit {
 
     let animeParams = (new HttpParams()).set('q', this.q)
 
+    // 1) simple way, need to {{ whatever fields from animeResults you want }} in html
+    // this.http.get<any>(url, { params: animeParams })
+    //   .toPromise()
+    //   .then(animeResults => {
+    //     this.animeResults = animeResults['results']
+    //     console.log('this.animeResults ---> ', this.animeResults)
+    //   }
+    //   )
+    //   .catch((error: HttpErrorResponse) => { console.log('HttpError ---> ', error )})
+    
+    // 2) reference to model way
     this.http.get<any>(url, { params: animeParams })
-      .toPromise()
-      .then(animeResults => {
-        this.animeResults = animeResults['results']
-        console.log('this.animeResults ---> ', this.animeResults)
-      }
-      )
+    .toPromise()
+    .then(response => {
+      // console.log('response ---> ', response['results'])
+      const results = response['results'] as any[] // type as array as this.animeResults is array
+      
+      // return just the properties you want, according to animeResult in models.ts
+      this.animeResults = results.map(anime => {
+        return {
+          image_url: anime['image_url'],
+          rated: anime['rated'],
+          synopsis: anime['synopsis'],
+          title: anime['title'],
+          url: anime['url']
+        } as AnimeResult
+        })
+      console.log(this.animeResults)
+      })
       .catch((error: HttpErrorResponse) => { console.log('HttpError ---> ', error )})
 }}
 

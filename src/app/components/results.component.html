@@ -14,6 +14,28 @@
   Results for '{{ q }}' under<code> {{ genre }} </code>genre
 </h3>
 
-<div *ngFor="let r of animeResults">
-  {{ r.title }}
+<div *ngFor="let anime of animeResults">
+  <div class="card mt-3 mb-3" style="max-width: 540px">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <img
+          src="{{ anime.image_url }}"
+          class="card-img"
+          alt="{{ anime.title }}"
+        />
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title anime-title">{{ anime.title }}</h5>
+          <small class="text-muted">Rating: {{ anime.rated }}</small>
+          <p class="card-text">
+            {{ anime.synopsis }}
+          </p>
+          <p class="card-text">
+            <a href="{{ anime.url }}" target="_blank">More information</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

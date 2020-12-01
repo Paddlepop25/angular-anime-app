@@ -8,10 +8,10 @@ export interface SearchOption {
   genre: Genre
 }
 
-export interface animeResult {
+export interface AnimeResult {
   image_url: string,
   rated: string,
-  sypnosis: string,
+  synopsis: string,
   title: string,
   url: string
 }
