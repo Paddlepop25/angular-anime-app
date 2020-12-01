@@ -7,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchComponent implements OnInit {
 
-  constructor() { }
+  genre = 'anime' // default
 
+  constructor() {
+
+   }
+
+  // create
   ngOnInit(): void {
   }
 
+  // runs when user select either anime or manga button
+  setGenre(g: string) {
+    this.genre = g;
+    console.info('genre chosen ---> ', this.genre)
+  }
 }

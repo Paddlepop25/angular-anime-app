@@ -17,8 +17,12 @@
   </div>
 
   <div class="btn-group btn-block" role="group">
-    <button type="button" class="btn btn-primary">Anime</button>
-    <button type="button" class="btn btn-success">Manga</button>
+    <button type="button" class="btn btn-primary" (click)="setGenre('anime')">
+      Anime
+    </button>
+    <button type="button" class="btn btn-success" (click)="setGenre('manga')">
+      Manga
+    </button>
   </div>
 
   <div class="row mt-2">
