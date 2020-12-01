@@ -34,8 +34,20 @@
 
   <div class="row mt-2">
     <div class="col d-flex justify-content-end align-items-center">
-      <button type="button" class="btn btn-light">Save</button>
-      <button type="button" class="ml-2 btn btn-dark">Search</button>
+      <button
+        type="button"
+        class="btn btn-light"
+        [disabled]="animeform.invalid"
+      >
+        Save
+      </button>
+      <button
+        type="button"
+        class="ml-2 btn btn-dark"
+        [disabled]="animeform.invalid"
+      >
+        Search
+      </button>
     </div>
   </div>
 </form>
