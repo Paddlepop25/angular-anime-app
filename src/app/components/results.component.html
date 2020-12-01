@@ -13,7 +13,7 @@
   </div>
 </div>
 
-<div *ngFor="let anime of animeResults">
+<div *ngFor="let anime of animeResults; let i = index">
   <div class="card mt-3 mb-3" style="max-width: 500px">
     <div class="row no-gutters">
       <div class="col-md-4">
@@ -33,7 +33,7 @@
           <p class="card-text">
             <a href="{{ anime.url }}" target="_blank">More information</a>
           </p>
-          <div class="d-flex justify-content-end">
+          <div class="d-flex justify-content-end" *ngIf="canShare">
             <button
               type="button"
               class="btn btn-outline-dark btn-sm"

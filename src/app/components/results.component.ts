@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { AnimeResult } from '../models';
+import { NgNavigatorShareService } from 'ng-navigator-share';
 
 @Component({
   selector: 'app-results',
@@ -13,10 +14,14 @@ export class ResultsComponent implements OnInit {
   genre = ''
   q = ''
   animeResults: any[] = []
+  canShare = false
 
-  constructor(private activatedRoute: ActivatedRoute, private http: HttpClient) { }
+  constructor(private activatedRoute: ActivatedRoute, private http: HttpClient, private webShare: NgNavigatorShareService) { }
 
   ngOnInit(): void {
+    // @ts-check
+    this.canShare = !!navigator['share']
+
     // search/:genre/:q
     this.genre = this.activatedRoute.snapshot.params['genre']
     this.q = this.activatedRoute.snapshot.params['q']
@@ -60,7 +65,39 @@ export class ResultsComponent implements OnInit {
       console.log(this.animeResults)
       })
       .catch((error: HttpErrorResponse) => { console.log('HttpError ---> ', error )})
-}}
+    }
+  
+    // see documentation: takes only title, text, url (?)
+    // remove *ngIf="canShare" from results.html to see console.log (button will disappear if cannot share)
+    shareThis(i: number) {
+      // console.log('index of each anime result ---> ', i)
+      const singleAnime = this.animeResults[i]
+      console.log('singleAnime ---> ', singleAnime)
+
+      if (!this.webShare.canShare()) {
+        alert(`This service/api is not supported in your Browser`);
+        return;
+      }
+
+      this.webShare.share({
+        title: singleAnime.title,
+        text: singleAnime.synopsis,
+        url: singleAnime.image
+      })
+      .catch( (error) => {
+        console.log('Webshare error ---> ', error);
+      });
+    }
+  }
+    
+
+// image_url: "https://cdn.myanimelist.net/images/anime/12/84704.jpg?s=da0fc3851d315800dc3aeaf2ddf0d819"
+// rated: "PG"
+// synopsis: "Valt Aoi, who participated in the Japanese Championship, was scouted for the prestigious Spanish team BC Sol and heads out to Spain. With their sights set on the world, Valt and his friends begin thei..."
+// title: "Beyblade Burst God"
+// url: "https://myanimelist.net/anime/34901/Beyblade_Burst_God"
+
+
 
 // One anime result:
 // airing: false
