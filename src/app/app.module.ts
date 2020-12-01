@@ -9,6 +9,8 @@ import { SearchComponent } from './components/search.component';
 import { SearchlistComponent } from './components/searchlist.component';
 import { ResultsComponent } from './components/results.component';
 
+import { AnimeDatabaseService } from './anime.database.service';
+
 // start lottie animation
 import { LottieModule } from 'ngx-lottie';
 import player from 'lottie-web';
@@ -24,7 +26,7 @@ const ROUTES: Routes = [
   { path:'', component: MainComponent },
   { path:'search-list', component: SearchlistComponent },
   { path:'search', component: SearchComponent },
-  { path:'results', component: ResultsComponent },
+  { path:'search/:genre/:q', component: ResultsComponent },
   { path: '**', redirectTo: '/', pathMatch: 'full' }
 ]
 
@@ -43,7 +45,7 @@ const ROUTES: Routes = [
     RouterModule.forRoot(ROUTES),
     LottieModule.forRoot({ player: playerFactory })
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [ AnimeDatabaseService ],
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }
