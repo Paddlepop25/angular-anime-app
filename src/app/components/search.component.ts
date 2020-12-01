@@ -27,8 +27,7 @@ export class SearchComponent implements OnInit {
     // search/:genre/:q
     // console.log(this.animeform)
     const q = removeSpacesForQ(this.animeform.get('q').value)
-    console.log(q)
-    // this.router.navigate(['/search', 'this.genre', q])
+    this.router.navigate(['/search', 'this.genre', q])
   }
 
 
@@ -39,6 +38,8 @@ export class SearchComponent implements OnInit {
       q: this.animeform.get('q').value,
       genre: this.genre == 'anime' ? Genre.Anime : Genre.Manga
     }
+
+    // saving to database portion!
     // parameters in saveSearchOption(xx) must match what was set in anime.database.service.ts hence option above
     await this.animeDB.saveSearchOption(option)
 

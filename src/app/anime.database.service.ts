@@ -38,7 +38,7 @@ export class AnimeDatabaseService extends Dexie {
     .and(doc => doc.genre == genre)
     .count()
     
-    // if there are no records, add to the table
+    // if there are no existing records, add to the table
     if (resultCount <= 0) {
       return this.searchOptionTable.add(s)
     }  
