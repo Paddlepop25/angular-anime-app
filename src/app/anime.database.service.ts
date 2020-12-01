@@ -43,4 +43,9 @@ export class AnimeDatabaseService extends Dexie {
       return this.searchOptionTable.add(s)
     }  
   }
+
+  // retrieve saved q from IndexedDB
+  getSearchOptions(): Promise<SearchOption[]> {
+    return this.searchOptionTable.orderBy('q').toArray()
+  }
 }
