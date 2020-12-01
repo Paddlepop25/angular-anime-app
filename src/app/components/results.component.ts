@@ -91,7 +91,6 @@ export class ResultsComponent implements OnInit {
     }
   }
     
-
 // image_url: "https://cdn.myanimelist.net/images/anime/12/84704.jpg?s=da0fc3851d315800dc3aeaf2ddf0d819"
 // rated: "PG"
 // synopsis: "Valt Aoi, who participated in the Japanese Championship, was scouted for the prestigious Spanish team BC Sol and heads out to Spain. With their sights set on the world, Valt and his friends begin thei..."

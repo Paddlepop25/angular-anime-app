@@ -1,5 +1,11 @@
 # AngularAnimeApp
 
+This application is deployed in [Vercel](angular-anime-app.vercel.app)
+
+Search for results of anime or manga genre with a text of your choice. Add it to the list to be displayed on the homepage.
+
+You are able to revisit the search again just by a click of a button.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.1.
 
 ## Development server
