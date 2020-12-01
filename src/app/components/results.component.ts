@@ -79,10 +79,11 @@ export class ResultsComponent implements OnInit {
         return;
       }
 
+      // only can share text for iphone. check Chuk's article for added code for iphone
       this.webShare.share({
         title: singleAnime.title,
         text: singleAnime.synopsis,
-        url: singleAnime.image
+        url: singleAnime.image_url
       })
       .catch( (error) => {
         console.log('Webshare error ---> ', error);
@@ -96,8 +97,6 @@ export class ResultsComponent implements OnInit {
 // synopsis: "Valt Aoi, who participated in the Japanese Championship, was scouted for the prestigious Spanish team BC Sol and heads out to Spain. With their sights set on the world, Valt and his friends begin thei..."
 // title: "Beyblade Burst God"
 // url: "https://myanimelist.net/anime/34901/Beyblade_Burst_God"
-
-
 
 // One anime result:
 // airing: false
