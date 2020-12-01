@@ -33,6 +33,15 @@
           <p class="card-text">
             <a href="{{ anime.url }}" target="_blank">More information</a>
           </p>
+          <div class="d-flex justify-content-end">
+            <button
+              type="button"
+              class="btn btn-outline-dark btn-sm"
+              (click)="shareThis(i)"
+            >
+              💌
+            </button>
+          </div>
         </div>
       </div>
     </div>
